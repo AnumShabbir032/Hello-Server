@@ -2,16 +2,32 @@ console.log("Bello Server");
 
 import express from "express";
 
+import cors from 'cors'
+
 const app = express()
-const port = 3000
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
+app.use(cors());
+
+app.get('/home', (req, res) => {
+  res.send('Welcome home!')
 })
 
-app.listen(port, () => {
-  console.log(`Bello Server  listening on port ${port}`)
+app.get('/profile', (req, res) => {
+  res.send('This is profile!')
 })
+
+app.get('/weather', (req, res) => {
+  res.send({
+    weather: 'sunny',
+    temperature: '20',
+    city: 'London'
+  })
+})
+
+app.listen(3000, () => {
+  console.log(`Bello Server  listening on port ${3000}`)
+})
+
 
 
 
